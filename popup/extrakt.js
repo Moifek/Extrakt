@@ -1,6 +1,11 @@
 
+let CurrentTabx = function getCurrentWindowTabs() {
+  return browser.tabs.query({ currentWindow: true });
+}
+
 
 console.log("+++++++++++0");
+console.log(CurrentTabx);
 
 
 function submit(){
@@ -13,7 +18,6 @@ function submit(){
     console.log(link.target == '_blank' ? 'External' : 'internal');
     });
   }
-
 
 /*//after DOM Loads
 document.addEventListener("DOMContentLoaded", function () {
