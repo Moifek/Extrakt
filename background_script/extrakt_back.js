@@ -1,13 +1,16 @@
+browser.tabs.executeScript({
+    file: "extrakt_content.js",
+  }).then(onExecuted);
 
-console.log("+++++++++++2");
 
-if (browser.tabs) {
-    console.log(browser.tabs[0]);
+function onExecuted(){
 
-    browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    let activeTab = browser.tabs[0];
-    browser.runtime.sendMessage(activeTab ,{ action: "giveTabInfo" }, function(response) {
-        console.log(response);
-    });
+    browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+        if (request.action === "submitClicked") {
+            browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                let activeTab = tabs[0];
+                browser.tabs.sendMessage(activeTab.id, { action: "logActiveTab", tab: activeTab });
+            });
+        }
     });
 }

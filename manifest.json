@@ -18,12 +18,13 @@
     },
     "content_scripts": [ {
       "matches":["<all_urls>"],
-      "js":["popup/extrakt.js"]
+      "js":["Content_scripts/extrakt_content.js"]
     }],
+
     "background": {
-      "scripts": ["background_script/extrakt_back.js"],
-      "persistent": false
+      "scripts": ["background_script/extrakt_back.js"]
     },
+
     "permissions": [
       "tabs",
       "activeTab",
