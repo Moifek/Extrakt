@@ -18,7 +18,7 @@
     },
     "content_scripts": [ {
       "matches":["<all_urls>"],
-      "js":["Content_scripts/extrakt_content.js"]
+      "js":["Content_script/extrakt_content.js"]
     }],
 
     "background": {

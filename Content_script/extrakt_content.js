@@ -1,10 +1,11 @@
 console.log("Content script has been loaded");
+
 browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === "logActiveTab") {
-      console.log(request.tab);
+    console.log(request.tab);
+    sendResponse("Message received by content script");
   }
 });
-
 /*
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "giveTabInfo") {
